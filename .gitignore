@@ -1,12 +1,40 @@
-*.class
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Default6.aspx.vb" Inherits="Default6" %>
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+<!DOCTYPE html>
 
-# Package Files #
-*.jar
-*.war
-*.ear
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script>
+MySlides=new Array("boot1.jpg","boot2.jpg","boot3.jpg","boot4.jpg")
+Slide=0
+function ShowSlides(SlideNumber){
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+{ Slide=Slide+SlideNumber
+if (Slide>MySlides.length-1){
+Slide=0
+}
+if (Slide<0) {
+Slide=MySlides.length-1
+}
+document.DisplaySlide.src=MySlides[Slide]
+}
+}    
+</script>
+</head>
+   
+ <body>
+<P align="center"><img src="boot1.jpg" name="DisplaySlide" width="900" height="800" /><p>
+<center>
+<table border=0>
+<tr>
+<td align=center>
+<input type="button" value="Back" onclick="ShowSlides(-1)">
+<input type="button" value="Forward" onclick="ShowSlides(1)">
+
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>
